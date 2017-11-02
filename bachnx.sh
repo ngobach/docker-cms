@@ -1,6 +1,9 @@
 #!/bin/bash
 
+htpasswd -bc /etc/nginx/htpasswd admin $ADMIN_PASSWORD
 service postgresql start
+service nginx start
+
 cmsInitDB
 cmsImporter /contest
 cmsAdminWebServer > /dev/null 2>&1 & 
